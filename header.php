@@ -1,8 +1,7 @@
 <?php 
-    $intHeightLogo = 30;
-    $intWwidthLogo = 24;
+	$previousURL = wp_get_referer();
+	$currentURL = get_permalink(); 
 ?>
-
 <!DOCTYPE html>
 <html lang="fr-FR">
     <head>
@@ -13,75 +12,93 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--style de la page-->
       <?php wp_head(); ?>
+	    <style>
+            .banniere-header{
+                background-image: url("<?php the_field('banniere'); ?>");
+                height: 30rem;
+                width: 100%;
+            }
+			:root{
+				--main-bg-color: <?php the_field('nav_bar_color', 'options'); ?>;
+				--main-color: black;
+				--h1-size: 10rem;
+				--h2-size: 8rem;
+				--h3-size: 6rem;
+				--h4-size: 4rem;
+				--h5-size: 2rem;
+				--h6-size: 1rem;
+
+				--h1-color: red;
+				--h2-color: red;
+				--h3-color: red;
+				--h4-color: red;
+				--h5-color: red;
+				--h6-color: red;
+
+				--bg-toggler: <?php the_field('couleur_bouton_nav', 'options'); ?>;
+
+				--nav-bar-brand: white;
+				--nav-bar-hover: <?php the_field('navbar-hover', 'options'); ?>;
+			}
+        </style>
     </head>
-    
-    <nav class="navbar sticky-top">
-                <div class="container-fluid">
-               
-                <?php if (get_bloginfo('description', true)){?>
-                    <a class="navbar-brand" href="<?php echo( home_url() ); ?>">
-                        <?php the_custom_logo(); ?>
-                        <?php echo(get_bloginfo('description')); ?>
-                    </a>
-                    <a class="navbar-brand" href="<?php echo( home_url() ); ?>">
-                          <?php echo(get_bloginfo('name')); ?>
-                    </a>
-                <?php }else{ ?>
-                  <a class="navbar-brand" href="<?php echo( home_url() ); ?>">
-                        <?php the_custom_logo(); ?>
-                  </a>
-                      <a class="navbar-brand" href="<?php echo( home_url() ); ?>">
-                          <?php echo(get_bloginfo('name')); ?>
-                      </a>
-                    <?php } ?>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                        <span class="navbar-toggler-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><?php echo(get_bloginfo('name')); ?></h5>
-                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">
-                                        Accueil
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        Link
-                                    </a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                                        <li>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                
-                </div>
-            </nav>
             <body>
+    <nav class="navbar navbar-expand-lg text-uppercase sticky-top">
+      <div class="container">
+          <a class="navbar-brand" href="<?php echo home_url()?>">Auctiolive</a>
+          <button class="navbar-toggler text-uppercase font-weight-bold text-white rounded navbar-boutton" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              Menu
+              <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3" href="<?php echo(the_permalink('164')); ?>">Estimer un bien</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3" href="<?php the_permalink('179'); ?>">Venir aux prochaines ventes</a></li>
+				<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3" href="<?php the_permalink('195'); ?>">Blog</a></li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+
         <header>
+        <?php if(is_page( array( 179, 176, 3) ) OR is_single()) { ?>
+            <div class="d-flex justify-content-center mt-2">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"> <a href="<?php echo home_url()?>">Accueil</a> </li>
+                        <li class="breadcrumb-item active" aria-current="page"><?php the_title()?></li>
+                    </ol>
+                </nav>
+            </div>
+        <?php }elseif(is_category()){ ?>
+            <div class="d-flex justify-content-center mt-2">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"> <a href="<?php echo home_url(); ?>">Accueil</a> </li>
+						<?php  
+						if($previousURL == "https://www.wplearning.fr/final/julie/ventes-a-venir/"){ ?>
+                        <li class="breadcrumb-item"> <a href="https://www.wplearning.fr/final/julie/ventes-a-venir/">Liste des ventes à venir</a> </li>
+						<?php }elseif($previousURL == "https://www.wplearning.fr/final/julie/ventes-passees/"){ ?>
+						<li class="breadcrumb-item"> <a href="https://www.wplearning.fr/final/julie/ventes-passees/">Liste des ventes passées</a> </li>
+						<?php } ?>
+
+                        <li class="breadcrumb-item active" aria-current="page">
+						<?php 
+							if(is_category('antiquites')){ 
+								echo('Antiquités');
+							}elseif(is_category('vehicules')){ 
+								echo('Véhicules'); 
+							}elseif(is_category('art')){ 
+								echo('Art');
+							}elseif(is_category('mobilier')){
+								echo('Mobilier');
+							}else{
+								echo('Nom de la catégorie');
+							}
+						?>
+						</li>
+                    </ol>
+                </nav>
+            </div>
+            <?php } ?>
         </header>

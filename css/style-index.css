@@ -1,7 +1,7 @@
 /*instanciation des variables du theme*/
 
 :root{
-    --main-bg-color: red;
+    --main-bg-color: black;
     --main-color: black;
     --h1-size: 10rem;
     --h2-size: 8rem;
@@ -20,31 +20,93 @@
     --bg-toggler: white;
     --togler-icon: black;
 
-    --nav-bar-brand: black;
+    --nav-bar-brand: white;
     --nav-bar-hover: grey;
 }
 /*navbar*/
-.navbar{
-    background-color: var(--main-bg-color);
+    .navbar{
+        background-color: var(--main-bg-color);
+    }
+    .navbar-boutton{
+        background-color: var(--bg-toggler);
+    }
+    .navbar-brand{
+        color: var(--nav-bar-brand);
+    }
+    .navbar-brand:hover{
+        color: var( --nav-bar-hover);
+    }
+    .navbar-brand:visited{
+        color: var(--nav-bar-brand);
+    }
+    .nav-link{
+        color: white;
+    }
+    .nav-link:hover{
+        color: lightslategrey;
+    }
+/*Fin barre de navigation*/
+
+/*fil d'ariane*/
+    .breadcrumb a{
+        color: var(--main-bg-color);
+    }
+/*fin fil d'ariane*/
+    article{
+        border: grey 1px solid;
+        border-radius: 5px;
+        box-shadow: 5px 6px 9px -7px rgba(0,0,0,0.5);
+        width: 25%;
+    }
+/*classe d'ajustement des images*/
+    .small-pic{
+        width: 20rem;
+        height: 20rem;
+    }
+/*Footer*/
+.sticky-bottom{
+    position: static;
+    bottom: 0;
 }
-body nav button.navbar-toggler{
-    background-color: var(--bg-toggler);
-}
-.navbar-toggler-icon{
-    align-content: center;
-    color:var(--togler-icon);
-}
-.navbar-brand{
-    color: var(--nav-bar-brand);
-}
-.navbar-brand:hover{
-    color: var( --nav-bar-hover);
-}
-.navbar-brand:visited{
-    color: var(--nav-bar-brand);
-}
-article{
-    border: grey 1px solid;
-    border-radius: 5px;
-    box-shadow: 5px 6px 9px -7px rgba(0,0,0,0.5);
-}
+    /*Footer marque*/
+        .JS{
+            background-color: black;
+            color: white;
+        }
+        .JS a{
+            color: white;
+        }
+        .JS a:visited{
+            color: lightgrey;
+        }
+    /*fin footer marque*/
+
+/*style des pages de liste des ventes*/
+    .ventes li{
+        list-style-type: none;
+    }
+    .ventes a{
+        color: var(--main-bg-color);
+    }
+    .ventes a:hover{
+        color: var(--nav-bar-hover);
+    }
+/*fin style des pages de listes des ventes*/
+
+/*format tablette*/
+    @media screen and (min-device-width: 768px)
+    and (max-device-width: 1024px) {
+        article {
+        width: 100%;
+        }
+    }
+/*format mobile*/
+    @media screen and (max-device-width: 480px)
+    and (orientation: portrait) {
+        article {
+            width: 100%;
+        }
+        article img{
+            width: 99%;
+        }
+    }
